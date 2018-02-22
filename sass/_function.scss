@@ -1,0 +1,51 @@
+
+// 变量的值可以根据自己需求定义
+$browser-default-font-size: 16px !default;
+
+@function pxTorem($px){ 
+    @return $px / $browser-default-font-size * 1rem; 
+}
+
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-units($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@mixin remCalc($property, $values...) { 
+    $max: length($values);//返回$values列表的长度值 
+    $pxValues: ''; 
+    $remValues: ''; 
+    
+    @for $i from 1 through $max { 
+        $value: strip-units(nth($values, $i));//返回$values列表中的第$i个值，并将单位值去掉 
+        $browser-default-font-size: strip-units($browser-default-font-size); 
+        $pxValues: #{$pxValues + $value * $browser-default-font-size}px; 
+        
+        @if $i < $max { 
+            $pxValues: #{$pxValues + " "}; 
+        } 
+    } 
+    
+    @for $i from 1 through $max { 
+        $value: strip-units(nth($values, $i)); 
+        $remValues: #{$remValues + $value}rem; 
+        
+        @if $i < $max { 
+            $remValues: #{$remValues + " "}; 
+        } 
+    } 
+    
+    #{$property}: $pxValues; 
+    // #{$property}: $remValues; 
+}
+
+// SCSS
+html {
+    font-size: $browser-default-font-size;
+}

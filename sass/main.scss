@@ -1,0 +1,37 @@
+
+@import 'function.scss';
+
+
+
+.header {
+    font-size: pxTorem(12px);
+}
+
+
+//SCSS 
+.wrapper { 
+    @include remCalc(width,45); 
+    @include remCalc(margin,1,.5,2,3); 
+}
+
+body {
+    @include remCalc(padding, pxTorem(10));
+}
+
+.single {
+    color: blue;
+    width: 50px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+.multi {
+    color: orange;
+    width: 100px;
+    height: 36px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
