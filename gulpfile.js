@@ -44,4 +44,4 @@ gulp.task('html:watch', function () {
 });
 
 //运行gulp 默认的Task
-gulp.task('default',['sass','connect','html', 'sass:watch', 'html:watch'])
+gulp.task('default',['sass','css','connect','html', 'sass:watch', 'html:watch'])
