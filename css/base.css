@@ -2,7 +2,7 @@ body {
     font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
 }
 a,button,input,textarea{
-    -webkit-tap-highlight-color: rgba(0,0,0,0;)
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-user-modify:read-write-plaintext-only; 
 }
 input[type=number]::-webkit-textfield-decoration-container {
